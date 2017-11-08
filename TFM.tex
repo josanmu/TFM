@@ -1,0 +1,253 @@
+\documentclass[12pt,a4paper]{book}
+\usepackage{setspace}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\decimalpoint %punto decimal
+\usepackage{amsmath}   %paquetes matematicas necesarios
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{esvect}
+\usepackage{mathtools}
+\usepackage{multirow}
+\usepackage{caption}
+\usepackage{slashbox} 
+\usepackage{cancel}  %paquete para tachar (cancelar) en ecuaciones y entornos math ($bla bla bla$)
+\usepackage{color}   %poner color al texto \textcolor{"color"}{texto que se quiera poner en color}
+\usepackage{colortbl} %poner color a las tablas
+\usepackage{graphicx}  %entorno para poner imágenes
+\usepackage{epstopdf}
+\usepackage{animate}	%añadir gifs
+%\graphicspath{ {images/} }    %para indicar el directorio de las imagenes
+\usepackage[all]{xy}  %paquete para poner esquemas (flechas y eso)
+\usepackage[left=2.54cm,right=2.54cm,top=2.54cm,bottom=2.54cm]{geometry}%[a4paper,textwidth=80ex,bottom=2.5cm]{geometry}%[left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm]{geometry}   %paquete 													para margenes en la pagina
+\usepackage{titlesec}
+%\titleformat{\chapter}[hang]
+%    {\titlerule[2pt]\Large\scshape\raggedright}{}{0em}{Capítulo \thechapter. }[{\titlerule[2pt]}]
+\usepackage{pdfpages} %Inclusión de pdfs a página completa, para incrustados usar figure
+\usepackage{url}
+\usepackage[breaklinks=true]{hyperref}
+\hypersetup{
+    colorlinks = true,
+    %citebordercolor=false,
+    linkcolor=black,
+    urlcolor=blue,
+    urlbordercolor={1 0 0},
+    citecolor=black
+}
+\usepackage[nottoc]{tocbibind} %añadir bibliografía a índice
+\usepackage{pifont} %fuente de simbolos
+\usepackage{multirow}
+	%\multicolumn{no de columnas}{alineacion}{texto}
+	%\multirow{no de filas}{alineacion}{texto}
+	%(si no queremos especificar el ancho ponemos *).
+%\usepackage[none]{hyphenat}%\sloppy     %no cortar palabras
+\usepackage{booktabs}% http://ctan.org/pkg/booktabs
+\usepackage{multicol}
+	\setlength{\columnsep}{0cm}
+\usepackage{array}
+\usepackage{pgf,tikz}
+\usepackage{mathrsfs}
+\usetikzlibrary{arrows}
+%\usepackage{ornament}
+
+%\usepackage{apacite}
+\usepackage{flexbib}
+	\renewcommand{\bbletal}{et al.}
+	\renewcommand{\bibnamefont}[1]{#1}
+	\renewcommand{\bibfnamefont}[1]{#1}
+	\renewcommand{\nameseparator}{,}
+%\addto\captionsspanish{\renewcommand{\bibliographyname}{Bibliografía}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%																										%%
+%% --------------------------------------- MODIFICACIONES --------------------------------------------- %%
+%%																										%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\widowpenalty=10000 %lineas viudas
+\clubpenalty=10000 %lineas huerfanas
+
+
+\newtheorem{defi}{Definición}[section]
+  \newtheorem{teo}{Teorema}[section]
+  \newtheorem{ej}{Ejemplo}[section]
+\newtheorem{prop}{Proposición}[section]
+\renewcommand{\theprop}{\arabic{chapter}.\arabic{section}.\arabic{prop}}
+\newtheorem{cor}{Corolario}[section]
+\newtheorem{lema}{Lema}[section]
+
+\newcommand{\f}[1]{{\textsc\sffamily #1}}
+\newcommand{\mt}[1]{\mathbb{#1}}
+\newcommand{\tu}[1]{\textup{#1}}
+\newcommand{\cl}[1]{\mathcal{#1}}
+\newcommand{\sm}{\sum\limits}
+\newcommand{\Figura}[1]{\textbf{Figura \ref{#1}}}
+\newcommand{\cod}[1]{{\small\ttfamily\fcolorbox{white}{gray90}{\textbf{#1}}}}
+\newcommand{\tc}[2]{\textcolor{#1}{#2}}
+\renewcommand{\sin}{\operatorname{\sen}}
+\newcommand{\tabitem}{~~\llap{\textbullet}~~}
+
+%Cita
+\newenvironment{dedication}
+	{%\clearpage	%we want a new page 		%%	comented this
+		\thispagestyle{empty} %no header an footer
+		%\vspace*{\stretch{1}} %some space at the top
+		\itshape			  %the text is in italic
+		\raggedleft			  %flush to the right margin
+	}
+	{	\par %end the paragraph
+		%\vspace{\stretch{3}} %space at the bottom is three times that at the top
+		%\clearpage %finish off the page
+	}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%	
+%---------------------------------------------------------------------------------------------------------------
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%																										%%
+%% ------------------------------------------- ENCABEZADO --------------------------------------------- %%
+%%																										%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{fancyhdr}
+%
+%% aqui definimos el encabezado de las paginas pares e impares. define el texto a la izquierda (l = left, c = center, r = right) de los encabezados
+%\lhead[\thepage]{}
+%\chead[j]{m}
+%\rhead[]{\thepage}
+\renewcommand{\headrulewidth}{0.5pt}%define el grosor de la línea
+%
+%% aqui definimos el pie de pagina de las paginas pares e impares.
+\lfoot[\thepage]{José Andrés Muñoz}
+\cfoot[]{}
+\rfoot[José Andrés Muñoz]{\thepage}
+\renewcommand{\footrulewidth}{0.5pt}
+%
+%% aqui definimos el encabezado y pie de pagina de la pagina inicial de un capitulo. define el texto de los encabezados de la primera página de un capítulo
+\fancypagestyle{plain}{
+\fancyhead[L]{}
+\fancyhead[C]{}
+\fancyhead[R]{}
+\fancyfoot[L]{}
+\fancyfoot[C]{}
+\fancyfoot[R]{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+}
+%
+%\pagestyle{fancy}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%---------------------------------------------------------------------------------------------------------------- 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{makeidx} %añade indice terminologico
+\def\indexname{Índice Terminológico}
+%\makeatletter
+%\renewcommand*{\cleardoublepage}{\clearpage\if@twoside
+%\ifodd\c@page\else
+%\hbox{}\thispagestyle{empty}\newpage
+%\if@twocolumn\hbox{}\newpage\fi\fi\fi}
+%\makeatother
+%\makeindex
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%																										%%
+%% ------------------------------------------- CUERPO ------------------------------------------------- %%
+%%																										%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\includeonly{
+	DocsPortada/Portada,
+	%DocsPortada/Portada1,
+	DeclaracionOriginalidad,
+	Agradecimientos,
+	Resumen,
+	Introduccion,
+	SintesisArticulo,
+	Analisis,
+	Reflexiones,
+	Anexos}
+\begin{document}
+\parskip=10pt plus 1pt minus 3pt %interlineado
+\renewcommand{\proofname}{\underline{\textit{Solución}}}
+\renewcommand{\tablename}{Tabla}
+
+%Portada:
+	
+	\pagestyle{empty}
+	\pagenumbering{Roman} 
+	\include{DocsPortada/Portada}
+	%\include{DocsPortada/Portada1}
+	
+\onehalfspace
+
+%Documentos Previos
+	\include{DeclaracionOriginalidad}
+	\include{Agradecimientos}
+
+%Indice:
+	\tableofcontents 
+	%Encabezado
+	\lhead[Trabajo Final de Máster]{Índice}
+	\rhead[Índice]{Trabajo Final de Máster}
+	\pagestyle{fancy}
+	
+%Introduccion/Resumen:
+\include{Resumen}
+\pagestyle{empty}
+%\include{ResumenFr}
+\titleformat{\chapter}[hang]
+    %{\titlerule[2pt]\Large\scshape\raggedright}{}{0em}{}[{\titlerule[2pt]}]
+    {\titlerule\bf\Huge}{}{0em}{}[{\titlerule}]
+\include{Introduccion}
+
+%Capitulos:
+%\setcounter{chapter}{0}
+\titleformat{\chapter}[hang]
+    {\titlerule\bf\Huge}{}{0em}{\chaptertitlename \ \thechapter. }[{\titlerule}]
+    \pagestyle{empty}
+\include{SintesisArticulo}
+\include{Analisis}
+\include{Reflexiones}
+
+
+
+%Indice Terminologico
+%\def\indexname{Índice terminológico}
+%\addcontentsline{toc}{chapter}{Índice Terminológico}
+%\printindex
+
+
+%Bibliografia:
+\titleformat{\chapter}[hang]
+    %{\titlerule[2pt]\Large\scshape\raggedright}{}{0em}{}[{\titlerule[2pt]}]
+    {\titlerule\bf\Huge}{}{0em}{}[{\titlerule}]
+    
+\fancypagestyle{plain}{
+	\fancyhead[L]{Trabajo Final de Máster}
+	\fancyhead[C]{}
+	\fancyhead[R]{Bibliografía}
+	\fancyfoot[L]{}
+	\fancyfoot[C]{}
+	\fancyfoot[R]{\thepage}
+	\renewcommand{\headrulewidth}{0.5pt}
+	\renewcommand{\footrulewidth}{0.5pt}
+}
+\nocite{*}
+%\renewcommand{\refname}{Bibliografía}
+\bibliographystyle{flexbib}%amsplain plain    %apalike
+\bibliography{Bi}
+
+
+%Anexos
+\titleformat{\chapter}[hang]
+    %{\titlerule[2pt]\Large\scshape\raggedright}{}{0em}{}[{\titlerule[2pt]}]
+    {\bf\Huge}{}{0em}{}[{}]
+\include{Anexos}
+
+
+\end{document}	
